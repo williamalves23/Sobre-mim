@@ -1,0 +1,286 @@
+/* Irei fazer umas variáveis para me ajudar na padronização e facilitar no meio do css */
+
+:root{
+    --main-color: #1500d3;
+    --black: #000;
+    --bg: #010103;
+    --border: 0.1rem solid rgba(255,255,255,0.3);
+    font-size: 9px;
+
+}
+
+/* Fiz um padrão para todo o projeto */
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+img{
+    width: 55px;
+}
+
+img:hover{
+    transform: scale(1.2);
+}
+
+
+body{
+    background-color: var(--black);
+
+}
+
+section{
+    padding: 3rem 2rem;
+    margin: 0 auto;
+    max-width: 1100px;
+}
+
+.header{
+    background-color: var(--bg);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    border-bottom: var(--border);
+
+}
+
+.header section{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.navegacao a{
+    margin: 0 1rem;
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.navegacao a:hover{
+    color: var(--main-color);
+    border-bottom: 0.1rem solid var(--main-color);
+    padding-bottom: 0.5rem;
+    font-size: 2rem;
+
+}
+
+.botaobv {
+    background-color: var(--main-color);
+    color: white;
+    padding: 1rem 3rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: inline-block;
+
+}
+
+.botaobv:hover{
+    letter-spacing: 0.15rem;
+
+}
+/* Ajustando a imagem de fundo e as letras da página inicial */
+.boasvindas {
+    background: url(./img/Boasvindas2.png);
+    background-image: center;
+    background-size: cover;
+}
+
+.boasvindas section{
+    display: flex;
+    align-items: center;
+    min-height: 129vh;
+}
+
+.conteudo {
+    max-width: 100rem;
+
+}
+
+.conteudo h3{
+    color: #fff;
+    font-size: 6rem;
+
+}
+
+.conteudo p{
+    color: #fff;
+    font-size: 2rem;
+    font-weight: 100;
+    line-height: 1.8;
+    padding: 1rem 0;
+}
+
+/* Vamos agora estilizar a segunda parte da página */
+
+.title {
+    font-size: 5rem;
+    color: var(--main-color);
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 5rem;
+}
+
+.title span{
+    color: #fff;
+    text-transform: uppercase;
+    
+}
+
+.sobremim .row{
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 255, 0.103);
+    gap: 1.5rem;
+
+}
+
+.sobremim .row .conteudo{
+    padding: 2rem;
+
+}
+
+.sobremim .row .conteudo h3{
+    font-size: 3rem;
+    color: #fff;
+
+}
+
+.sobremim .row .conteudo p{
+    font-size: 1.6rem;
+    color: #fff;
+    padding: 1rem 0;
+    line-height: 1.8;
+}
+
+
+.imagemsobremim #sobre-mimslide{
+    width: 362px;
+    transition: ease-in-out 0.5s;
+}
+.imagemsobremim #slide-sobre-mim{
+    width: 362px;
+    transition: ease-in-out 0.5s;
+}
+
+.imagemsobremim #about-trabalho{
+    width: 362px;
+    transition: ease-in-out 0.5s;
+}
+
+
+.formacao .box-conteiner{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
+    gap: 1.5rem;
+}
+
+.formacao .box-conteiner .box{
+    text-align: center;
+    border: var(--border);
+    padding: 5rem;
+
+}
+
+.formacao .box-conteiner .box img{
+    width: 14rem;
+}
+
+.formacao .box-conteiner .box h3{
+    color: #fff;
+    font-size: 2.5rem;
+    padding: 1rem 0;
+
+}
+
+.formacao .box-conteiner .box .price {
+    color: #fff;
+    font-size: 2.5rem;
+    padding: 0.5rem 0;
+}
+
+
+.portifolio .box-conteiner{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
+    gap: 1.5rem;
+}
+
+.portifolio .box-conteiner .box{
+    text-align: center;
+    border: var(--border);
+    padding: 5rem;
+
+}
+
+.portifolio .box-conteiner .box img{
+    width: 14rem;
+}
+
+.portifolio .box-conteiner .box h3{
+    color: #fff;
+    font-size: 2.5rem;
+    padding: 1rem 0;
+
+}
+
+.portifolio .box-conteiner .box .price {
+    color: #fff;
+    font-size: 2.5rem;
+    padding: 0.5rem 0;
+}
+
+/* Parte de contato */
+.contato {
+    background-color: rgba(0, 0, 255, 0.103);
+    border: var(--border);
+    border-radius: 10px;
+    padding: 4rem 2rem;
+}
+
+.formulario-contato {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.formulario-contato label {
+    font-size: 1.8rem;
+    color: #fff;
+}
+
+.formulario-contato input,
+.formulario-contato textarea {
+    padding: 1rem;
+    font-size: 1.6rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg);
+    color: #fff;
+    border: var(--border);
+    resize: none;
+}
+
+.formulario-contato input::placeholder,
+.formulario-contato textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.formulario-contato input:focus,
+.formulario-contato textarea:focus {
+    border: 1px solid var(--main-color);
+    outline: none;
+}

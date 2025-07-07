@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sorteio</title>
+  <link rel="stylesheet" href="INICIO.css">
+  <link rel="icon" href="sorteio.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <div class="container">
+    <h1>SORTEIO</h1>
+    <br>
+    <br>  
+    <!-- Campo para o valor por participante -->
+    <div class="campo-valor">
+      <input type="number" id="valorInput" placeholder="Valor por participante (R$)" min="0" step="0.01" />
+    </div>
+
+    <!-- Campo para adicionar nome -->
+    <div class="campo">
+      <input type="text" id="nomeInput" placeholder="Digite um nome" />
+      <button id="adicionarBtn">Adicionar</button>
+    </div>
+<br>
+    <ul id="listaNomes"></ul>
+
+    <!-- Total arrecadado -->
+    <div id="totalArrecadado" style="margin-top: 20px; font-weight: bold; color: #1453a5;"></div>
+
+    <!-- Botão de sorteio -->
+    <button id="sortearBtn" style="margin-top: 20px; padding: 10px 20px; background-color: #2e5c9a; color: white; border: none; border-radius: 6px; cursor: pointer;">Sortear</button>
+
+    <!-- Resultado do sorteio -->
+    <div id="resultadoSorteio" style="margin-top: 20px; font-size: 18px; font-weight: bold; color: green;"></div>
+  </div>
+ 
+  <script>
+    const botao = document.getElementById("adicionarBtn");
+    const input = document.getElementById("nomeInput");
+    const lista = document.getElementById("listaNomes");
+    const valorInput = document.getElementById("valorInput");
+
+    botao.addEventListener("click", function () {
+      const nome = input.value.trim();
+      const valor = parseFloat(valorInput.value);
+
+      if (nome === "") return;
+
+      const item = document.createElement("li");
+
+      const nomeSpan = document.createElement("span");
+      nomeSpan.textContent = valor && !isNaN(valor)
+        ? `${nome} - R$ ${valor.toFixed(2)}`
+        : nome;
+
+      const botaoRemover = document.createElement("button");
+      botaoRemover.textContent = "❌";
+      botaoRemover.classList.add("remover");
+
+      botaoRemover.addEventListener("click", function () {
+        lista.removeChild(item);
+        atualizarTotal();
+      });
+
+      item.dataset.valor = !isNaN(valor) ? valor : 0;
+      item.appendChild(nomeSpan);
+      item.appendChild(botaoRemover);
+      lista.appendChild(item);
+
+      input.value = "";
+      atualizarTotal();
+    });
+
+    function atualizarTotal() {
+      const itens = lista.querySelectorAll("li");
+      let total = 0;
+
+      itens.forEach(item => {
+        const valor = parseFloat(item.dataset.valor);
+        if (!isNaN(valor)) {
+          total += valor;
+        }
+      });
+
+      const totalDiv = document.getElementById("totalArrecadado");
+      totalDiv.textContent = `Total arrecadado: R$ ${total.toFixed(2)}`;
+    }
+
+        const botaoSortear = document.getElementById("sortearBtn");
+        const resultadoDiv = document.getElementById("resultadoSorteio");
+
+        botaoSortear.addEventListener("click", function () {
+        const itens = lista.querySelectorAll("li");
+
+        if (itens.length === 0) {
+        resultadoDiv.textContent = "Nenhum participante para sortear!";
+        resultadoDiv.style.color = "red";
+        return;
+      }
+
+        const indexSorteado = Math.floor(Math.random() * itens.length);
+        const nomeSorteado = itens[indexSorteado].querySelector("span").textContent;
+
+        resultadoDiv.style.color = "green";
+        resultadoDiv.textContent = `🎉 Sorteado: ${nomeSorteado}!`;
+         });
+
+  </script>
+</body>
+</html>
